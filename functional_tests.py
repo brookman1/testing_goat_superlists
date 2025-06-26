@@ -44,7 +44,8 @@ class NewVisitorTest(unittest.TestCase):
         table = self.browser.find_element(By.TAG_ID, 'id_list_table')
         rows = table.fin_elements(By.TAG_NAME, 'tr')
         self.assertTrue(
-                any(row.text == '1: Buy peacock feathers' for row in rows)
+                any(row.text == '1: Buy peacock feathers' for row in rows),
+                'New to-do item does not appear in table'
                 )
 
         # There is still a text box inviting her to add another item. She
@@ -58,7 +59,8 @@ class NewVisitorTest(unittest.TestCase):
         rows = table.fin_elements(By.TAG_NAME, 'tr')
         self.assertTrue(
                 any(row.text == '2: Use peacock feathers to make a fly'\
-                        for row in rows)
+                        for row in rows),
+                'New to-do item does not appear in table'
                 )
 
         # The page updates again, and now shows both items on her list
