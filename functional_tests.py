@@ -42,7 +42,7 @@ class NewVisitorTest(unittest.TestCase):
         time.sleep(0.5)
 
         table = self.browser.find_element(By.ID, 'id_list_table')
-        rows = table.fin_elements(By.TAG_NAME, 'tr')
+        rows = table.find_elements(By.TAG_NAME, 'tr')
         self.assertTrue(
                 any(row.text == '1: Buy peacock feathers' for row in rows),
                 'New to-do item does not appear in table'
@@ -56,7 +56,7 @@ class NewVisitorTest(unittest.TestCase):
         time.sleep(0.5)
 
         table = self.browser.find_element(By.CLASS_NAME, 'id_list_table')
-        rows = table.fin_elements(By.TAG_NAME, 'tr')
+        rows = table.find_elements(By.TAG_NAME, 'tr')
         self.assertTrue(
                 any(row.text == '2: Use peacock feathers to make a fly'\
                         for row in rows),
