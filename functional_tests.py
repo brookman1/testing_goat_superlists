@@ -26,7 +26,7 @@ class NewVisitorTest(unittest.TestCase):
         self.assertIn('To-Do', header_text)
 
         # She is invited to enter a to-do item straight away
-        inputbox = self.browser.find_element(By.TAG_ID, 'id_new_item')
+        inputbox = self.browser.find_element(By.ID, 'id_new_item')
         self.assertEqual(
                 inputbox.get_attribute('placeholder'),
                 'Enter a to-do item'
@@ -39,9 +39,9 @@ class NewVisitorTest(unittest.TestCase):
         # When she hits enter, the page updates, and now the page lists
         # "1: Buy peacock feathers" as an item in a to-do list
         inputbox.send_keys(Keys.ENTER)
-        time.spleep(0.5)
+        time.sleep(0.5)
 
-        table = self.browser.find_element(By.TAG_ID, 'id_list_table')
+        table = self.browser.find_element(By.ID, 'id_list_table')
         rows = table.fin_elements(By.TAG_NAME, 'tr')
         self.assertTrue(
                 any(row.text == '1: Buy peacock feathers' for row in rows),
@@ -55,7 +55,7 @@ class NewVisitorTest(unittest.TestCase):
         inputbox.send_keys(Keys.ENTER)
         time.sleep(0.5)
 
-        table = self.browser.find_element(By.TAG_ID, 'id_list_table')
+        table = self.browser.find_element(By.CLASS_NAME, 'id_list_table')
         rows = table.fin_elements(By.TAG_NAME, 'tr')
         self.assertTrue(
                 any(row.text == '2: Use peacock feathers to make a fly'\
