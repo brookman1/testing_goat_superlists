@@ -63,6 +63,7 @@ class NewVisitorTest(LiveServerTestCase):
         time.sleep(0.5)
 
         table = self.browser.find_element(By.ID, 'id_list_table')
+        time.sleep(10.5)
         rows = table.find_elements(By.TAG_NAME, 'tr')
         self.wait_for_row_in_list_table('1: Buy peacock feathers')
 
@@ -129,11 +130,11 @@ class NewVisitorTest(LiveServerTestCase):
 
         # Francis gets his own unique URL
         francis_list_url = self.browser.current_url
-        self.assertRegex(francis_lists_url, '/lists/.+')
-        self.assertNotEqual(francis_list_url, edith_lists_url)
+        self.assertRegex(francis_list_url, '/lists/.+')
+        self.assertNotEqual(francis_list_url, edith_list_url)
 
         # Again, there is no trace of Edith's list
-        page_text = self.brower.find_element(By.TAG_NAME, 'body').text
+        page_text = self.browser.find_element(By.TAG_NAME, 'body').text
         self.assertNotIn('Buy peacock feathers', page_text)
         self.assertIn('Buy milk', page_text)
 
