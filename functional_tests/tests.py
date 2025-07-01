@@ -63,7 +63,6 @@ class NewVisitorTest(LiveServerTestCase):
         time.sleep(0.5)
 
         table = self.browser.find_element(By.ID, 'id_list_table')
-        time.sleep(10.5)
         rows = table.find_elements(By.TAG_NAME, 'tr')
         self.wait_for_row_in_list_table('1: Buy peacock feathers')
 
