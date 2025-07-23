@@ -14,7 +14,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
         self.browser = webdriver.Firefox()
         staging_server = os.environ.get('STAGING_SERVER')
         if staging_server:
-            self.live_server_url = 'http://' + staging_server
+            self.live_server_url = 'https://' + staging_server
 
     def tearDown(self):
         self.browser.quit()
@@ -88,7 +88,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
         # She visits that URL - her to-do list is still there.
 
-        self.browser.get('http://localhost:8000')
+        self.browser.get(self.live_server_url)
 
         # She noteces the page title and header mention to-do lists
         self.assertIn('To-Do', self.browser.title)
